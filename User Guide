@@ -1,0 +1,11 @@
+Add a field (Admin) – Choose option 1 Enter a unique field ID (integer), location, size (5‑a‑side/7‑a‑side/11‑a‑side), and hourly rate.
+
+Register a customer – Choose option 3 Provide a name and phone number.
+
+Book a field – Choose option 4 Enter the field ID, your registered name, date (YYYY‑MM‑DD), start time (HH:MM), and duration in hours.
+
+View your bookings – Choose option 5 and enter your name to see your reservation history.
+
+View all fields – Choose option 2 to check current field availability.
+
+Exit – Choose option 6 to quit the program.
