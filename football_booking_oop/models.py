@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-
+# FIELD CLASS
+# Access is controlled via @property getters and methods like book()
 class Field:
     def __init__(self, field_id: int, location: str, size: str, rate: float):
         self.__id = field_id
@@ -43,6 +44,7 @@ class Field:
         return f"ID: {self.__id} | {self.__location} | {self.__size} | ${self.__rate}/hr | {status}"
 
 
+# USER ABSTRACT BASE CLASS
 class User(ABC):
     def __init__(self, name: str, phone: str):
         self._name = name
@@ -63,7 +65,7 @@ class User(ABC):
     def __str__(self):
         return f"{self.get_role()}: {self._name} ({self._phone})"
 
-
+# CUSTOMER CLASS
 class Customer(User):
     def get_role(self):
         return "Customer"
@@ -71,7 +73,7 @@ class Customer(User):
     def view_my_bookings(self, booking_system):
         return booking_system.get_bookings_by_user(self._name)
 
-
+# ADMIN CLASS
 class Admin(User):
     def get_role(self):
         return "Administrator"
@@ -79,7 +81,7 @@ class Admin(User):
     def add_field(self, booking_system, field_id, location, size, rate):
         return booking_system.add_field(field_id, location, size, rate)
 
-
+# BOOKING CLASS
 class Booking:
     def __init__(self, field: Field, customer: Customer, date_str: str,
                  start_time: str, duration: int):

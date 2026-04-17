@@ -2,6 +2,8 @@ from models import Customer, Admin
 from system import BookingSystem
 
 
+# UI HELPER FUNCTIONS
+
 def display_fields(system):
     fields = system.get_all_fields()
     if not fields:
@@ -26,7 +28,7 @@ def register_customer(system):
 def book_field(system):
     display_fields(system)
     if not system.get_all_fields():
-        return
+        return   
     try:
         field_id = int(input("\nEnter field ID to book: "))
         customer_name = input("Enter your registered name: ").strip()
@@ -64,6 +66,7 @@ def admin_add_field(system):
         print("Invalid ID. Must be an integer.")
         return
 
+    # Check for duplicate ID
     if system.find_field_by_id(field_id) is not None:
         print(f"Field ID {field_id} already exists. Cannot add duplicate ID.")
         return
@@ -83,8 +86,11 @@ def admin_add_field(system):
         print("Failed to add field.")
 
 
+# MAIN PROGRAM ENTRY POINT
+
 def main():
     system = BookingSystem()
+    
     admin = Admin("Admin", "00000000")
     system.register_user(admin)
 
@@ -98,6 +104,7 @@ def main():
         print("6. Exit")
         choice = input("Select option: ").strip()
 
+        # Route to appropriate function based on user choice
         if choice == '1':
             admin_add_field(system)
         elif choice == '2':
